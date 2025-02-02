@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Release
-        uses: semantic-release-action/rust/semantic-release-library@v5
+        uses: casbin-rs/semantic-release-action-rust/semantic-release-library@master
         with:
           toolchain: ${{ inputs.toolchain }}
           disable-semantic-release-cargo: ${{ inputs.disable-semantic-release-cargo }}

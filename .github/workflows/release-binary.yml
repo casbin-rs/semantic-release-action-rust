@@ -15,13 +15,9 @@ on:
         type: string
         default: |
           aarch64-apple-darwin
-          aarch64-unknown-linux-gnu
-          aarch64-unknown-linux-musl
-          i686-unknown-linux-gnu
-          i686-unknown-linux-musl
           x86_64-apple-darwin
+          x86_64-pc-windows-msvc
           x86_64-unknown-linux-gnu
-          x86_64-unknown-linux-musl
       toolchain:
         description: Rust toolchain specification
         type: string
@@ -372,7 +368,7 @@ jobs:
 
     steps:
       - name: Release
-        uses: semantic-release-action/rust/semantic-release-binary@v5
+        uses: casbin-rs/semantic-release-action-rust/semantic-release-binary@master
         with:
           toolchain: ${{ inputs.toolchain }}
           compiled-targets: ${{ needs.configure-job-matrix.outputs.compilation-matrix }}
