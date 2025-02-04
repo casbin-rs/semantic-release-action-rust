@@ -139,15 +139,18 @@ runs:
               $compiled_targets
               | map({
                 path: ".semantic-release-action_rust/dist/\(.binary_name)-\(.target)/\(.binary_name)-\(.target)",
-                label: "\(.binary_name)-\(.target)" 
+                label: "\(.binary_name)-\(.target)"
               })
             '
         )"
 
+        # Add .exe suffix for windows targets
+        release_assets_with_exe="$(echo "$release_assets" | jq 'map(if .label | contains("windows") then .label += ".exe" else . end)')"
+
         # Array<{ path: string, label: string }>
         {
           echo "release-assets<<EOF"
-          echo "$release_assets"
+          echo "$release_assets_with_exe"
           echo "EOF"
         } >> "$GITHUB_OUTPUT"
       shell: bash
