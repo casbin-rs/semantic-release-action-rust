@@ -269,6 +269,8 @@ jobs:
     name: (${{ matrix.build.binary_name }}, ${{ matrix.build.target }})
     if: needs.get-next-version.outputs.new-release-published == 'true'
     runs-on: ${{ matrix.build.host }}
+    env: 
+      VERSION: ${{ needs.get-next-version.outputs.new-release-version }}
     needs:
       - get-next-version
       - configure-job-matrix
