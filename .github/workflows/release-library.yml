@@ -20,7 +20,7 @@ on:
       disable-semantic-release-git:
         description: Disable @semantic-release/git in your release flow. Only takes effect if the action semantic-release config is used.
         type: boolean
-        default: true
+        default: false
     secrets:
       cargo-registry-token:
         description: API token for writing to your cargo registry
